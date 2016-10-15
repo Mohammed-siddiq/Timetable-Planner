@@ -1,0 +1,6 @@
+3a-LAB2 3a-LAB2 3a-LAB2 0 0 0 0 
+3a-LAB2 3a-LAB2 3a-LAB2 0 0 3a-10cs35 0 
+3a-LAB2 3a-LAB2 3a-LAB2 0 0 0 3a-10cs35 
+0 0 3a-10cs35 0 0 0 0 
+0 0 0 3a-10cs35 0 0 0 
+3a-10cs35 0 0 0 0 0 0 

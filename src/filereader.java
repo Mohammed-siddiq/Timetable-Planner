@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author AFZAAL
@@ -22,7 +23,7 @@ public class filereader implements Serializable {
     void fload(String fnam, int[][] teach) throws IOException {
         FileReader f1;
         f1 = null;
-        String fname = fnam + ".txt";
+        String fname = "generate data\\"+fnam + ".txt";
         File f = new File(fname);
         Boolean status = f.exists();
         if (status == true) {
@@ -70,6 +71,7 @@ public class filereader implements Serializable {
         {
             JOptionPane.showMessageDialog(null, "sorry"+tname+"already ocuupied on requested day and period.");
             
+            
         }
         else
         {
@@ -83,7 +85,7 @@ public class filereader implements Serializable {
     void update_tempload(String tname) throws FileNotFoundException, IOException// to load the file onto a temp array
     {
           String fname, s;
-        fname = tname + ".txt";
+        fname = "generate data\\"+tname + ".txt";
         BufferedReader fp = new BufferedReader(new  FileReader(new File(fname)));
         int c = -1;
         while ((s = fp.readLine()) != null) {
@@ -98,7 +100,7 @@ public class filereader implements Serializable {
     
     void update_teachfile(String tname) throws IOException
     {
-         BufferedWriter fp = new BufferedWriter(new FileWriter(new File(tname+".txt")));
+         BufferedWriter fp = new BufferedWriter(new FileWriter(new File("generate data\\"+tname+".txt")));
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                     fp.write(temp[i][j]+" "); 
@@ -112,7 +114,7 @@ public class filereader implements Serializable {
     void fload_2(int[][] teach, String fnam) throws FileNotFoundException, IOException {
         FileReader f1;
         f1 = null;
-        String fname = fnam + ".txt";
+        String fname = "generate data\\"+fnam + ".txt";
         File f = new File(fname);
         f1 = new FileReader(f);
         BufferedReader fp;
@@ -147,7 +149,7 @@ public class filereader implements Serializable {
 
         String fname, st;
 
-        fname = fnam + ".txt";
+        fname = "generate data\\"+fnam + ".txt";
         BufferedWriter fp = new BufferedWriter(new FileWriter(new File(fname)));
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
@@ -263,6 +265,45 @@ void modified_tt_store(String fnam,section sec) throws IOException {
 void fetch_subjectlist(String[] subj,String sem)
 {
     String fname=sem+".txt";
+    
+    
+}
+void initialize_directories()
+{
+    File fp= new File("generate data");
+    File fp2=new File("teacher files");
+    File fp3=new File("timetable");
+    
+    if(fp.exists())
+    {
+       String[] entries1=fp.list();
+    String[] entries2=fp2.list();
+    String[] entries3=fp3.list();
+    
+    for(String s:entries1)
+    {
+        File currentfile=new File(fp.getName()+"\\"+s);
+        currentfile.delete();
+    }
+    for(String s:entries2)
+    {
+        File currentfile=new File(fp2.getName()+"\\"+s);
+        currentfile.delete();
+    }
+    for(String s:entries3)
+    {
+        File currentfile=new File(fp3.getName()+"\\"+s);
+        currentfile.delete();
+    }
+    fp.delete();
+    fp2.delete();
+    fp3.delete();
+    
+    }
+    
+        fp.mkdir();
+        fp2.mkdir();
+        fp3.mkdir();
     
     
 }

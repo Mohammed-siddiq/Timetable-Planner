@@ -90,7 +90,7 @@ public class time_tab implements Serializable {
 
     }
 
-    void timetable(int d, int di, int period, int pesc, subject s[], int tt[][],int nos) throws IOException {
+    void timetable(int tt_gen_count,int d, int di, int period, int pesc, subject s[], int tt[][],int nos) throws IOException {
         if (period <= 3) {
             if (pesc == 6) {
                 period = period + 1;
@@ -114,20 +114,20 @@ public class time_tab implements Serializable {
         if (tt[d][period] == -1) {
             for (int subjct = 0; subjct < nos; subjct++) {
                 int subj = sub_array[subjct];
-                if (p.place(subj, d, period, s, tt)) {
+                if (p.place(tt_gen_count,subj, d, period, s, tt)) {
                     tt[d][period] = subj;
                     s[subj].sc++;
                     s[subj].teach[d][period] = 2;
                     pesc++;
                     //section.tsc++;
-                    display(tt);
+                    //display(tt);
                     if (complete(s,nos)) {
 
                    //end = period;
                         //st = d;
                         print(s, tt,nos);
                     } else {
-                        timetable(d, (di == 5) ? 0 : di + 1, period, pesc, s, tt,nos);
+                        timetable(tt_gen_count,d, (di == 5) ? 0 : di + 1, period, pesc, s, tt,nos);
                         if (flag == 1)//once printed return back***
                         {
                             s[subj].sc--;//restores when backtracking
@@ -142,7 +142,7 @@ public class time_tab implements Serializable {
                 }
             }
         } else {
-            timetable(d, (di == 5) ? 0 : di + 1, period, pesc, s, tt,nos);
+            timetable(tt_gen_count,d, (di == 5) ? 0 : di + 1, period, pesc, s, tt,nos);
         }
     }
 

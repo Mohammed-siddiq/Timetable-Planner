@@ -17,7 +17,7 @@ public class subject implements Serializable {
     public String subcode = null, t_name = null, s_name = null;
     int noc, sc;
     int[][] teach;
-    String sub_sf;
+    String sub_sf;//short form
 
     subject() {
         sc = 0;//subject count

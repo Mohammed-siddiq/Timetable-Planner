@@ -16,10 +16,13 @@ import java.io.Serializable;
 public class section extends inputd implements Serializable {
 
     char section;
-    public int nos;
+    public int nos;//no of subjects
     public int[][] tt = new int[6][7];
     time_tab ttobj;
-    int i, j;int nol_pw=-1 ;int [][]sp_day;
+    int i, j;int nol_pw=-1 ;
+    String [][] sp_day;
+    String [][] priority_buff;
+    int [][] sp_day_p;
      int count_nol_pw  ,count_no_priority=0;     
     boolean doneflag=false//done flag for subject 
             ,lab_save=false,labdone=false,subdone=false,prioritydone=false,generatedone=false,modifysub=false,dusted=false;
@@ -37,8 +40,8 @@ public class section extends inputd implements Serializable {
 
         if (flag == 0) {
             tempsc = new int[6];
-            temp_teach = new int[6][6][7];
-            temp_tt = new int[6][7];
+             temp_teach = new int[6][6][7];
+         //   temp_tt = new int[6][7];
             objfp = new filereader();
             ttobj = new time_tab();
           
@@ -60,7 +63,7 @@ public class section extends inputd implements Serializable {
             }
             for (i = 0; i <nos; i++) {
                 objfp.f_temp_load(s[i].t_name);
-                objfp.fstore(s[i].t_name, i, s,sem,sect);
+//                objfp.fstore(s[i].t_name, i, s,sem,sect);
             }
 
         } else {
@@ -76,7 +79,7 @@ public class section extends inputd implements Serializable {
                 for (int j = 0; j < 6; j++) {
                     for (int k = 0; k < 7; k++) {
                         temp_teach[i][j][k] = s[i].teach[j][k];
-                        temp_tt[j][k] = tt[j][k];
+                      //  temp_tt[j][k] = tt[j][k];
                     }
                 }
             }
@@ -86,7 +89,7 @@ public class section extends inputd implements Serializable {
             psc = ttobj.psc_0(tt);
 
             System.out.println("about to generated");
-            ttobj.timetable(0, 0, 0, psc, s, tt,nos);
+          //  ttobj.timetable(0, 0, 0, psc, s, tt,nos);
             section tempobj = new section();
             do {
                 System.out.println("\n do you want one more timetable\t 1:yes 2:no done");
@@ -96,7 +99,7 @@ public class section extends inputd implements Serializable {
                         for (int j = 0; j < 6; j++) {
                             for (int k = 0; k < 7; k++) {
                                 s[i].teach[j][k] = temp_teach[i][j][k];
-                                tt[j][k] = temp_tt[j][k];
+//                                tt[j][k] = temp_tt[j][k];
                             }
                         }
                     }
@@ -107,7 +110,7 @@ public class section extends inputd implements Serializable {
                     }
                     ttobj.set_time_tab();
                     psc = ttobj.psc_0(tt);
-                    ttobj.timetable(0, 0, 0, psc, s, tt,nos);
+            //        ttobj.timetable(0, 0, 0, psc, s, tt,nos);
                 }
 
             } while (ch == 1);
@@ -120,7 +123,7 @@ public class section extends inputd implements Serializable {
             }
             for (i = 0; i <nos; i++) {
                 objfp.f_temp_load(s[i].t_name);
-                objfp.fstore(s[i].t_name, i, s,sem,sect);
+//                objfp.fstore(s[i].t_name, i, s,sem,sect);
 
             }
            

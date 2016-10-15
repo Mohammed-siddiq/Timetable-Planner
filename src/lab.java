@@ -28,6 +28,7 @@ public class lab implements Serializable {
     public int nol;
     int day, s_per;
     public boolean ftc = false;//flag for teacher occupied
+    
 
     lab() {
 
@@ -49,7 +50,8 @@ public class lab implements Serializable {
             f1 = null;
             FileWriter f2;
             f2 = null;
-            String fname =tname + ".txt";
+            ftc=false;
+            String fname ="generate data\\"+tname + ".txt";
             File fp = new File(fname);
             Boolean status = fp.exists();
             if (status) {
@@ -125,7 +127,7 @@ public class lab implements Serializable {
         f1 = null;
         FileWriter f2;
         f2 = null;
-        String fname = tname + ".txt";
+        String fname = "generate data\\"+tname + ".txt";
         File fp = new File(fname);
         ftc=false;
         Boolean status = fp.exists();
@@ -144,7 +146,7 @@ public class lab implements Serializable {
                 for (int j = 0; j < 7; j++) {
                     //       temp[c][j+1]=new String();
                     temp[c][j] = l[j];
-                    if (c == lday && j + 1 == sper) {
+                    if (c == lday && j == sper) {//check again is it j or j+1
                         if (l[j].equals(Integer.toString(sem) + sect + "-" + lcode) && l[j + 1].equals(Integer.toString(sem) + sect + "-" + lcode)
                                 && l[j + 2].equals(Integer.toString(sem) + sect + "-" + lcode)) {
                             temp[c][j] = "0";

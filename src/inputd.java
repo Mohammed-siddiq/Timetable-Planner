@@ -158,7 +158,7 @@ public class inputd extends lab implements Serializable {
             for (int i = 0; i < nol; i++) {
                 l[i].day = lday;
                 l[i].s_per = sper;
-                l[i].read_lt(sem, sect, l[i].l_teach[0],lday,sper);
+//                l[i].read_lt(sem, sect, l[i].l_teach[0],lday,sper);
                 //    l[i].upd_lp(j, prty, s);     
             }
             prty[lday][sper] = 99;
